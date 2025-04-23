@@ -6,6 +6,8 @@ using DDD.BackEndTiendaProductos.Application.Features.Validators;
 using FluentValidation.AspNetCore;
 using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using DDD.BackEndTiendaProductos.Application.Mappings;
+using Swashbuckle.AspNetCore.Filters;
+using DDD.BackEndTiendaProductos.WebApi.Controllers.Swagger;
 
 namespace DDD.BackEndTiendaProductos.WebApi.Registration;
 
@@ -25,6 +27,8 @@ public class Program
         builder.Services.AddBusinessServices();
         builder.Services.AddInfrastructureServices(builder.Configuration);
         builder.Services.AddSwaggerServices();
+        //Aqui vamos a añadir al ProductModelExample(Swagger)
+        builder.Services.AddSwaggerExamplesFromAssemblyOf<ProductModelExample>();
 
         builder.Services.AddFluentValidation(conf =>
             conf.RegisterValidatorsFromAssemblyContaining<ProductModelValidator>());

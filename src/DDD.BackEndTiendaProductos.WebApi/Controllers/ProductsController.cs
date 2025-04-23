@@ -1,6 +1,8 @@
 ﻿using DDD.BackEndTiendaProductos.Domain.Contracts.Services;
 using DDD.BackEndTiendaProductos.Domain.Models;
+using DDD.BackEndTiendaProductos.WebApi.Controllers.Swagger;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace DDD.BackEndTiendaProductos.WebApi.Controllers
 {
@@ -49,13 +51,14 @@ namespace DDD.BackEndTiendaProductos.WebApi.Controllers
         /// Crea un nuevo Producto
         /// </summary>
         /// <param name="model">El ProductModel recibido como request</param>
-        /// <returns></returns>
+        /// <returns>Codigo de respuesta con el mensaje de exito o fracaso de la operación</returns>
         [HttpPost]
         [Route("")]
         [ProducesResponseType(typeof(OkResponseModel), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerResponseExample(StatusCodes.Status200OK,typeof(ProductModelExample))]
         [Produces("application/json")]
         public async Task<ActionResult> PostProduct([FromBody] ProductModel model)
         {
@@ -67,7 +70,7 @@ namespace DDD.BackEndTiendaProductos.WebApi.Controllers
         /// Elimina un Producto
         /// </summary>
         /// <param name="model"></param>
-        /// <returns></returns>
+        /// <returns>Codigo de respuesta con el mensaje de exito o fracaso de la operación</returns>
         [HttpDelete]
         [Route("{id}")]
         [ProducesResponseType(typeof(OkResponseModel), StatusCodes.Status200OK)]
@@ -80,10 +83,15 @@ namespace DDD.BackEndTiendaProductos.WebApi.Controllers
             var response = await _productServices.DeleteProductAsync(id);
             return Ok(response);
         }
-
+        /// <summary>
+        /// Actualiza un producto
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="id"></param>
+        /// <returns>Codigo de respuesta con el mensaje de exito o fracaso de la operación</returns>
         [HttpPut]
         [Route("{id}")]
-        
+        [ProducesResponseType(typeof(OkResponseModel), StatusCodes.Status200OK)]
         public async Task<IActionResult> UpdateProducts([FromBody] ProductModel model,[FromRoute] int id)
         {
             var response = await _productServices.UpdateProductAsync(model, id);
