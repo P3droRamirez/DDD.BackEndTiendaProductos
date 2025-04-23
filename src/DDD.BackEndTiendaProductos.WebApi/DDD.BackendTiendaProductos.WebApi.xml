@@ -22,14 +22,22 @@
             Crea un nuevo Producto
             </summary>
             <param name="model">El ProductModel recibido como request</param>
-            <returns></returns>
+            <returns>Codigo de respuesta con el mensaje de exito o fracaso de la operación</returns>
         </member>
         <member name="M:DDD.BackEndTiendaProductos.WebApi.Controllers.ProductController.DeleteProduct(System.Int32)">
             <summary>
             Elimina un Producto
             </summary>
             <param name="model"></param>
-            <returns></returns>
+            <returns>Codigo de respuesta con el mensaje de exito o fracaso de la operación</returns>
+        </member>
+        <member name="M:DDD.BackEndTiendaProductos.WebApi.Controllers.ProductController.UpdateProducts(DDD.BackEndTiendaProductos.Domain.Models.ProductModel,System.Int32)">
+            <summary>
+            Actualiza un producto
+            </summary>
+            <param name="model"></param>
+            <param name="id"></param>
+            <returns>Codigo de respuesta con el mensaje de exito o fracaso de la operación</returns>
         </member>
     </members>
 </doc>

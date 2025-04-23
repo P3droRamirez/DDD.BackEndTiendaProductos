@@ -1,6 +1,7 @@
 ﻿
 using System.Reflection;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace DDD.BackEndTiendaProductos.WebApi.Registration
 {
@@ -15,6 +16,7 @@ namespace DDD.BackEndTiendaProductos.WebApi.Registration
                 services.AddEndpointsApiExplorer();
                 services.AddSwaggerGen(c =>
                 {
+                    c.ExampleFilters();
                     c.SwaggerDoc("v1", new OpenApiInfo
                     {
                         Version = "v1",
