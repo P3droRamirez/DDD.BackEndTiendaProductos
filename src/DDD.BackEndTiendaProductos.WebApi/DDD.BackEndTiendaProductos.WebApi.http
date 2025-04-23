@@ -1,0 +1,6 @@
+@DDD.BackEndTiendaProductos.WebApi_HostAddress = http://localhost:5091
+
+GET {{DDD.BackEndTiendaProductos.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
